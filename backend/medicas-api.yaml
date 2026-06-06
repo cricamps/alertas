@@ -1,0 +1,290 @@
+openapi: 3.0.0
+info:
+  title: Medicas BFF API
+  description: Sistema de Alertas Médicas - Backend for Frontend
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/pacientes:
+    get:
+      summary: Listar todos los pacientes
+      operationId: getAllPacientes
+      responses:
+        '200':
+          description: Lista de pacientes
+    post:
+      summary: Crear paciente
+      operationId: createPaciente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paciente'
+      responses:
+        '200':
+          description: Paciente creado
+  /api/pacientes/{id}:
+    get:
+      summary: Obtener paciente por ID
+      operationId: getPacienteById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paciente encontrado
+    put:
+      summary: Actualizar paciente
+      operationId: updatePaciente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Paciente'
+      responses:
+        '200':
+          description: Paciente actualizado
+    delete:
+      summary: Eliminar paciente
+      operationId: deletePaciente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Paciente eliminado
+  /api/senales:
+    get:
+      summary: Listar señales vitales
+      operationId: getAllSenales
+      responses:
+        '200':
+          description: Lista de señales vitales
+    post:
+      summary: Registrar señal vital
+      operationId: createSenal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SenalVital'
+      responses:
+        '200':
+          description: Señal registrada
+  /api/senales/{id}:
+    get:
+      summary: Obtener señal vital por ID
+      operationId: getSenalById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Señal encontrada
+    put:
+      summary: Actualizar señal vital
+      operationId: updateSenal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SenalVital'
+      responses:
+        '200':
+          description: Señal actualizada
+    delete:
+      summary: Eliminar señal vital
+      operationId: deleteSenal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Señal eliminada
+  /api/senales/paciente/{pacienteId}:
+    get:
+      summary: Señales vitales de un paciente
+      operationId: getSeñalesByPaciente
+      parameters:
+        - name: pacienteId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de señales del paciente
+  /api/alertas:
+    get:
+      summary: Listar todas las alertas
+      operationId: getAllAlertas
+      responses:
+        '200':
+          description: Lista de alertas
+    post:
+      summary: Crear alerta
+      operationId: createAlerta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alerta'
+      responses:
+        '200':
+          description: Alerta creada
+  /api/alertas/{id}:
+    get:
+      summary: Obtener alerta por ID
+      operationId: getAlertaById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Alerta encontrada
+    put:
+      summary: Actualizar alerta
+      operationId: updateAlerta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alerta'
+      responses:
+        '200':
+          description: Alerta actualizada
+    delete:
+      summary: Eliminar alerta
+      operationId: deleteAlerta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Alerta eliminada
+  /api/alertas/pendientes:
+    get:
+      summary: Alertas pendientes (no atendidas)
+      operationId: getAlertasPendientes
+      responses:
+        '200':
+          description: Lista de alertas pendientes
+  /api/alertas/paciente/{pacienteId}:
+    get:
+      summary: Alertas de un paciente
+      operationId: getAlertasByPaciente
+      parameters:
+        - name: pacienteId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lista de alertas del paciente
+components:
+  schemas:
+    Paciente:
+      type: object
+      properties:
+        id:
+          type: integer
+        nombre:
+          type: string
+        rut:
+          type: string
+        fechaNacimiento:
+          type: string
+          format: date
+        diagnostico:
+          type: string
+        cama:
+          type: string
+    SenalVital:
+      type: object
+      properties:
+        id:
+          type: integer
+        paciente:
+          type: object
+          properties:
+            id:
+              type: integer
+        frecuenciaCardiaca:
+          type: integer
+        presionSistolica:
+          type: integer
+        presionDiastolica:
+          type: integer
+        saturacionOxigeno:
+          type: number
+        temperatura:
+          type: number
+        frecuenciaRespiratoria:
+          type: integer
+        fechaRegistro:
+          type: string
+    Alerta:
+      type: object
+      properties:
+        id:
+          type: integer
+        paciente:
+          type: object
+          properties:
+            id:
+              type: integer
+        tipoAlerta:
+          type: string
+        descripcion:
+          type: string
+        nivel:
+          type: string
+          enum: [CRITICO, ALTO, MEDIO, BAJO]
+        atendida:
+          type: boolean
+        fechaAlerta:
+          type: string

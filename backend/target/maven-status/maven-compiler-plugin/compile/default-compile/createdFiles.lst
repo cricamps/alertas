@@ -1,0 +1,11 @@
+com\medicas\bff\model\Alerta.class
+com\medicas\bff\security\SecurityConfig.class
+com\medicas\bff\controller\SenalVitalController.class
+com\medicas\bff\controller\AlertaController.class
+com\medicas\bff\repository\AlertaRepository.class
+com\medicas\bff\repository\PacienteRepository.class
+com\medicas\bff\model\Paciente.class
+com\medicas\bff\controller\PacienteController.class
+com\medicas\bff\model\SenalVital.class
+com\medicas\bff\repository\SenalVitalRepository.class
+com\medicas\bff\BffApplication.class

@@ -1,0 +1,11 @@
+C:\Medicas\backend\src\main\java\com\medicas\bff\model\Alerta.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\controller\SenalVitalController.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\repository\SenalVitalRepository.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\model\SenalVital.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\controller\PacienteController.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\repository\AlertaRepository.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\controller\AlertaController.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\repository\PacienteRepository.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\BffApplication.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\model\Paciente.java
+C:\Medicas\backend\src\main\java\com\medicas\bff\security\SecurityConfig.java
