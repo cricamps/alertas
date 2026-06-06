@@ -1,5 +1,6 @@
 package com.medicas.bff.controller;
 
+import com.medicas.bff.dto.PacienteRequest;
 import com.medicas.bff.model.Paciente;
 import com.medicas.bff.repository.PacienteRepository;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pacientes")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = { "http://localhost:4200", "https://medicasapimgrupo2s3.azure-api.net" })
 public class PacienteController {
 
     private final PacienteRepository repo;
@@ -30,18 +31,24 @@ public class PacienteController {
     }
 
     @PostMapping
-    public Paciente create(@RequestBody Paciente paciente) {
-        return repo.save(paciente);
+    public ResponseEntity<Paciente> create(@RequestBody PacienteRequest dto) {
+        Paciente paciente = new Paciente();
+        paciente.setNombre(dto.getNombre());
+        paciente.setRut(dto.getRut());
+        paciente.setFechaNacimiento(dto.getFechaNacimiento());
+        paciente.setDiagnostico(dto.getDiagnostico());
+        paciente.setCama(dto.getCama());
+        return ResponseEntity.ok(repo.save(paciente));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> update(@PathVariable Long id, @RequestBody Paciente datos) {
+    public ResponseEntity<Paciente> update(@PathVariable Long id, @RequestBody PacienteRequest dto) {
         return repo.findById(id).map(p -> {
-            p.setNombre(datos.getNombre());
-            p.setRut(datos.getRut());
-            p.setFechaNacimiento(datos.getFechaNacimiento());
-            p.setDiagnostico(datos.getDiagnostico());
-            p.setCama(datos.getCama());
+            p.setNombre(dto.getNombre());
+            p.setRut(dto.getRut());
+            p.setFechaNacimiento(dto.getFechaNacimiento());
+            p.setDiagnostico(dto.getDiagnostico());
+            p.setCama(dto.getCama());
             return ResponseEntity.ok(repo.save(p));
         }).orElse(ResponseEntity.notFound().build());
     }

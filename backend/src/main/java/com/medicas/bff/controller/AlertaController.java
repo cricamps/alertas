@@ -1,20 +1,25 @@
 package com.medicas.bff.controller;
 
+import com.medicas.bff.dto.AlertaRequest;
 import com.medicas.bff.model.Alerta;
 import com.medicas.bff.repository.AlertaRepository;
+import com.medicas.bff.repository.PacienteRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/alertas")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = { "http://localhost:4200", "https://medicasapimgrupo2s3.azure-api.net" })
 public class AlertaController {
 
     private final AlertaRepository repo;
+    private final PacienteRepository pacienteRepo;
 
-    public AlertaController(AlertaRepository repo) {
+    public AlertaController(AlertaRepository repo, PacienteRepository pacienteRepo) {
         this.repo = repo;
+        this.pacienteRepo = pacienteRepo;
     }
 
     @GetMapping
@@ -40,17 +45,26 @@ public class AlertaController {
     }
 
     @PostMapping
-    public Alerta create(@RequestBody Alerta alerta) {
-        return repo.save(alerta);
+    public ResponseEntity<Alerta> create(@RequestBody AlertaRequest dto) {
+        return pacienteRepo.findById(dto.getPacienteId()).map(paciente -> {
+            Alerta alerta = new Alerta();
+            alerta.setPaciente(paciente);
+            alerta.setTipoAlerta(dto.getTipoAlerta());
+            alerta.setDescripcion(dto.getDescripcion());
+            alerta.setNivel(dto.getNivel());
+            alerta.setAtendida(dto.getAtendida() != null ? dto.getAtendida() : false);
+            alerta.setFechaAlerta(LocalDateTime.now());
+            return ResponseEntity.ok(repo.save(alerta));
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Alerta> update(@PathVariable Long id, @RequestBody Alerta datos) {
+    public ResponseEntity<Alerta> update(@PathVariable Long id, @RequestBody AlertaRequest dto) {
         return repo.findById(id).map(a -> {
-            a.setTipoAlerta(datos.getTipoAlerta());
-            a.setDescripcion(datos.getDescripcion());
-            a.setNivel(datos.getNivel());
-            a.setAtendida(datos.getAtendida());
+            a.setTipoAlerta(dto.getTipoAlerta());
+            a.setDescripcion(dto.getDescripcion());
+            a.setNivel(dto.getNivel());
+            if (dto.getAtendida() != null) a.setAtendida(dto.getAtendida());
             return ResponseEntity.ok(repo.save(a));
         }).orElse(ResponseEntity.notFound().build());
     }
