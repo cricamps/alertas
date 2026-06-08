@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Paciente, SenalVital, Alerta } from '../models/medicas.models';
 
-const API_BASE = 'https://0927vbvzqk.execute-api.us-east-1.amazonaws.com/prod/api';
+const API_BASE = 'http://98.81.199.157:8080/api';
 
 function getAuthHeaders(): HttpHeaders {
   try {
