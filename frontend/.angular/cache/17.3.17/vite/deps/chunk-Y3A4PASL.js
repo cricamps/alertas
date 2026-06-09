@@ -16748,7 +16748,7 @@ function getPerfMeasurementModule() {
     sessionStorage = window[BrowserCacheLocation.SessionStorage];
     const perfEnabled = sessionStorage?.getItem(BROWSER_PERF_ENABLED_KEY);
     if (Number(perfEnabled) === 1) {
-      return import("./BrowserPerformanceMeasurement-W5LX2GTX.js");
+      return import("./BrowserPerformanceMeasurement-KWEQKNZN.js");
     }
   } catch (e) {
   }
@@ -17331,4 +17331,4 @@ export {
 @azure/msal-browser/dist/index.mjs:
   (*! @azure/msal-browser v3.30.0 2025-08-05 *)
 */
-//# sourceMappingURL=chunk-Y5USCVAF.js.map
+//# sourceMappingURL=chunk-Y3A4PASL.js.map
