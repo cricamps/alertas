@@ -1,0 +1,10 @@
+com\duoc\producer\dto\PublicacionResponse.class
+com\duoc\producer\model\MensajePublicado.class
+com\duoc\producer\config\RabbitMQConfig.class
+com\duoc\producer\service\ProducerService.class
+com\duoc\producer\ProducerApplication.class
+com\duoc\producer\dto\MensajeRequest.class
+com\duoc\producer\controller\AlertaController.class
+com\duoc\producer\controller\MensajeController.class
+com\duoc\producer\dto\AlertaRequest.class
+com\duoc\producer\repository\MensajePublicadoRepository.class
