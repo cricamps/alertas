@@ -1,0 +1,8 @@
+# Este archivo fue reemplazado y movido a:
+#   C:\Medicas\consumer\docker-compose.yml
+#
+# (el repo Git de esta sumativa, cricamps/consumer-grupo2, vive en C:\Medicas\consumer)
+#
+# Para levantar el sistema completo (RabbitMQ + 4 microservicios):
+#   cd C:\Medicas\consumer
+#   docker-compose up --build

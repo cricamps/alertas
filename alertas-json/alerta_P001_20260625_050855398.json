@@ -1,0 +1,8 @@
+{
+  "tipo" : "ALERTA",
+  "pacienteId" : "P001",
+  "pacienteNombre" : "Juan Pérez",
+  "descripcion" : "Frecuencia cardíaca anormal: 140 bpm (rango normal 60-100) | Presión sistólica anormal: 180 mmHg (rango normal 90-140) | Presión diastólica anormal: 110 mmHg (rango normal 60-90) | Saturación de oxígeno baja: 89% (mínimo normal 95%) | Temperatura anormal: 39.2°C (rango normal 36.0-37.5°C)",
+  "detalle" : "FC: 140 bpm | PA: 180/110 mmHg | SpO2: 89% | Temp: 39.2°C",
+  "fechaGeneracion" : [ 2026, 6, 25, 5, 8, 55, 287399730 ]
+}
