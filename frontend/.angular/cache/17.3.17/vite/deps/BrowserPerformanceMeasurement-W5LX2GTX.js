@@ -1,8 +1,8 @@
 import {
   BrowserPerformanceMeasurement
-} from "./chunk-ZF33BDF6.js";
+} from "./chunk-M577PC7Z.js";
 import "./chunk-35ENWJA4.js";
 export {
   BrowserPerformanceMeasurement
 };
-//# sourceMappingURL=BrowserPerformanceMeasurement-KWEQKNZN.js.map
+//# sourceMappingURL=BrowserPerformanceMeasurement-W5LX2GTX.js.map

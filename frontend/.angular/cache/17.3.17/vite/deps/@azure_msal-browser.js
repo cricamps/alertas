@@ -57,10 +57,10 @@ import {
   createStandardPublicClientApplication,
   stubbedPublicClientApplication,
   version
-} from "./chunk-Y3A4PASL.js";
+} from "./chunk-Y5USCVAF.js";
 import {
   BrowserPerformanceMeasurement
-} from "./chunk-ZF33BDF6.js";
+} from "./chunk-M577PC7Z.js";
 import "./chunk-35ENWJA4.js";
 export {
   AccountEntity,
