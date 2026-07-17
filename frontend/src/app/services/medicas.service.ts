@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Paciente, SenalVital, Alerta } from '../models/medicas.models';
 
-const API_BASE = 'http://98.81.199.157:8080/api';
+// Enrutado a través de Azure API Management (medicasapimgrupo2s3) en vez de la IP directa del EC2.
+const API_BASE = 'https://medicasapimgrupo2s3.azure-api.net/medicas/api';
 
 function getAuthHeaders(): HttpHeaders {
   try {

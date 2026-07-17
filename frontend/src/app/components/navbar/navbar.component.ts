@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
         <li><a routerLink="/pacientes" routerLinkActive="active">👥 Pacientes</a></li>
         <li><a routerLink="/senales" routerLinkActive="active">💓 Señales Vitales</a></li>
         <li><a routerLink="/alertas" routerLinkActive="active">🚨 Alertas</a></li>
+        <li><a routerLink="/monitoreo" routerLinkActive="active">📡 Monitoreo</a></li>
       </ul>
       <div class="navbar-user">
         <span class="user-name">{{ userName }}</span>

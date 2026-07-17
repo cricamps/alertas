@@ -22,5 +22,10 @@ export const routes: Routes = [
     path: 'alertas',
     loadComponent: () => import('./components/alertas/alertas.component').then(m => m.AlertasComponent),
     canActivate: [MsalGuard]
+  },
+  {
+    path: 'monitoreo',
+    loadComponent: () => import('./components/monitoreo/monitoreo.component').then(m => m.MonitoreoComponent),
+    canActivate: [MsalGuard]
   }
 ];
